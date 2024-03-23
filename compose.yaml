@@ -1,0 +1,37 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:alpine3.19
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_DB=${POSTGRES_DB} #optional (specify default database instead of $POSTGRES_DB)
+    volumes:
+      - ./dados/postgresdata:/var/lib/postgresql/data
+#      - ./dados/startscripts:/docker-entrypoint-initdb.d/
+    ports:
+      - "5432:5432"
+    restart: always
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_MAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PW}
+    ports:
+      - "5050:80"
+    restart: always
+
+  frontend:
+    build:
+      context: front
+      target: development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./front/src:/code/src
+      - /project/node_modules
+    expose:
+      - 3306
+      - 33060
