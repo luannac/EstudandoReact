@@ -1,3 +1,21 @@
+// import React from 'react'
+
+// import Fundo from "./components/img/back_image.png"
+
+// export default function App(){
+//   const name = "Luann"
+
+
+//   return(
+//     <>
+//       <p>Hello World!</p>
+//       <p>Bem vindo!</p>
+//       <p>{name}</p>
+//       <img src={Fundo}/>
+//     </>
+//   )
+// }
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -15,7 +33,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Aprenda React
+          Mu Aprenda React
         </a>
       </header>
     </div>

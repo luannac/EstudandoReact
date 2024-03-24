@@ -23,15 +23,24 @@ services:
       - "5050:80"
     restart: always
 
-  frontend:
+  backend:
     build:
-      context: front
-      target: development
+      context: backend
+      target: build
     ports:
-      - 3000:3000
-    volumes:
-      - ./front/src:/code/src
-      - /project/node_modules
+      - 9000:9000
     expose:
-      - 3306
-      - 33060
+      - 8080
+
+  # frontend:
+  #   build:
+  #     context: front
+  #     target: development
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./front/src:/code/src
+  #     - /project/node_modules
+  #   expose:
+  #     - 3306
+  #     - 33060
